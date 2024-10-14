@@ -41,12 +41,13 @@ docs_subpath = docs_path / "{{ cookiecutter.docs }}"
 for obj in docs_subpath.iterdir():
     shutil.move(str(obj), str(docs_path))
 # {% endif %}
-
+"""
 # Create TDSP documentation folder if selected
 tdsp_docs_path = Path("docs/tdsp")
 tdsp_docs_path.mkdir(parents=True, exist_ok=True)
 
 # Copy TDSP template files
+
 tdsp_template_path = Path(__file__).parent.parent / "tdsp_templates"
 tdsp_files = [
     "project_charter.md",
@@ -57,7 +58,7 @@ tdsp_files = [
 
 for file in tdsp_files:
     shutil.copy(tdsp_template_path / file, tdsp_docs_path / file)
-
+"""
 # Remove all remaining docs templates
 for docs_template in docs_path.iterdir():
     if docs_template.is_dir() and not docs_template.name == "docs":
