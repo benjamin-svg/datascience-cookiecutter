@@ -6,7 +6,8 @@ from pathlib import Path
 #   our workaround is to include these utility functions in the CCDS package
 from ccds.hook_utils.custom_config import write_custom_config
 from ccds.hook_utils.dependencies import basic, packages, scaffold, write_dependencies
-
+import logging
+logging.info("include_tdsp_docs")
 #
 #  TEMPLATIZED VARIABLES FILLED IN BY COOKIECUTTER
 #
@@ -40,6 +41,22 @@ docs_subpath = docs_path / "{{ cookiecutter.docs }}"
 for obj in docs_subpath.iterdir():
     shutil.move(str(obj), str(docs_path))
 # {% endif %}
+
+# Create TDSP documentation folder if selected
+tdsp_docs_path = Path("docs/tdsp")
+tdsp_docs_path.mkdir(parents=True, exist_ok=True)
+
+# Copy TDSP template files
+tdsp_template_path = Path(__file__).parent.parent / "tdsp_templates"
+tdsp_files = [
+    "project_charter.md",
+    "data_dictionary.md",
+    "data_report.md",
+    "model_report.md"
+]
+
+for file in tdsp_files:
+    shutil.copy(tdsp_template_path / file, tdsp_docs_path / file)
 
 # Remove all remaining docs templates
 for docs_template in docs_path.iterdir():

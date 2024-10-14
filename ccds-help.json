@@ -277,5 +277,28 @@
                 } 
             }
         ]
+    },
+    {
+        "field": "include_tdsp_docs",
+        "help": {
+            "description": "Whether to include Team Data Science Process (TDSP) documentation templates.",
+            "more_information": "https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/overview"
+        },
+        "choices": [
+            {
+                "choice": "Yes",
+                "help": {
+                    "description": "Include TDSP documentation templates.",
+                    "more_information": ""
+                } 
+            },
+            {
+                "choice": "No",
+                "help": {
+                    "description": "Do not include TDSP documentation templates.",
+                    "more_information": ""
+                } 
+            }
+        ]
     }
 ]
